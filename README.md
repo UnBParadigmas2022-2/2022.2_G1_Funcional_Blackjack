@@ -1,43 +1,32 @@
-# RepositorioTemplate
-Esse repositório é para ser utilizado pelos grupos como um template inicial, da home page do Projeto.
-As seções do Template NÃO DEVEM SER OMITIDAS, sendo TODAS RELEVANTES.
-
-**!! *Atenção: Renomeie o seu repositório para (Ano.Semestre)_(Grupo)_(Paradigma)_(NomeDoProjeto)*. !!** 
-
-Paradigmas:
- - Funcional
- - Logico
- - SMA
-
-**!! *Não coloque os nomes dos alunos no título do repositório*. !!**
-
-**!! *Exemplo de título correto: 2022.2_G1_Logico_ProjetoRoteirosAereos*. !!**
- 
- (Apague esses comentários)
-
-# NomeDoProjeto
+# Blackjack
 
 **Disciplina**: FGA0210 - PARADIGMAS DE PROGRAMAÇÃO - T01 <br>
-**Nro do Grupo (de acordo com a Planilha de Divisão dos Grupos)**: XX<br>
-**Paradigma**: XXXXXXXXXX<br>
+**Nro do Grupo**: 02<br>
+**Paradigma**: Funcional<br>
 
 ## Alunos
 |Matrícula | Aluno |
 | -- | -- |
-| xx/xxxxxx  |  xxxx xxxx xxxxx |
-| xx/xxxxxx  |  xxxx xxxx xxxxx |
+| 18/0012002 |  Álvaro Gouveia |
+| 19/0044799 |  Antônio Ferreira de Castro Neto |
+| 19/0042419 |  Davi Matheus da Rocha de Oliveira |
+| 17/0142329 |  Francisco Emanoel Ferreira |
+| 19/0014032 |  Guilherme ROgelin Vial |
+| 18/0022237 |  Liverson Furtado Severo |
 
 ## Sobre 
-Descreva o seu projeto em linhas gerais. 
-Use referências, links, que permitam conhecer um pouco mais sobre o projeto.
-Capriche nessa seção, pois ela é a primeira a ser lida pelos interessados no projeto.
+Esse repositório possui como objetivo a realização do trabalho sobre o paradigma funcional na matéria Paradigmas de Programação do curso de engenharia de software na UnB - FGA. 
+
+Nosso projeto terá como base [esse](https://github.com/UnBParadigmas2021-2/2021.2_G5_Funcional_Blackjack) projeto, um jogo de blackjack em que o usuário joga contra a máquina.
+
+Nosso objetivo principal será a implementação de um modo multijogador para o jogo, além de melhorias gerais.
 
 ## Screenshots
 Adicione 2 ou mais screenshots do projeto em termos de interface e/ou funcionamento.
 
 ## Instalação 
-**Linguagens**: xxxxxx<br>
-**Tecnologias**: xxxxxx<br>
+**Linguagens**: Haskell<br>
+**Tecnologias**: GHCI<br>
 Descreva os pré-requisitos para rodar o seu projeto e os comandos necessários.
 Insira um manual ou um script para auxiliar ainda mais.
 Gifs animados e outras ilustrações são bem-vindos!
