@@ -1,7 +1,7 @@
 # Blackjack
 
 **Disciplina**: FGA0210 - PARADIGMAS DE PROGRAMAÇÃO - T01 <br>
-**Nro do Grupo**: 02<br>
+**Nro do Grupo**: 01<br>
 **Paradigma**: Funcional<br>
 
 ## Alunos
