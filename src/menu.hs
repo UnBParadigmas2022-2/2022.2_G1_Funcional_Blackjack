@@ -11,9 +11,11 @@ import System.Random
 
 main :: IO ()
 main = do
-  putStr "\ESC[2J"
   putStrLn "Bem-vindo ao BlackJack\n"
-  mainMenu 2000
+  handle <- openFile "game.txt" ReadWriteMode
+  string <- hGetContents handle
+  let money = read string::Int
+  mainMenu money
 
 mainMenu :: Int -> IO ()
 mainMenu money = do
@@ -22,15 +24,21 @@ mainMenu money = do
     else do
       putStrLn "Menu Principal do Jogo: "
       putStrLn "1 - Iniciar partida"
-      putStrLn "2 - Fechar\n"
+      putStrLn "2 - Salvar"
+      putStrLn "3 - Fechar\n"
       option <- getLine
       case option of
         "1" -> startGameMenu money
-        "2" -> putStrLn "O jogo serah finalizado...\n"
+        "2" -> saveGame money
+        "3" -> putStrLn "O jogo esta sendo finalizado...\n"
+
+saveGame :: Int -> IO ()
+saveGame money = do
+        writeFile "game.txt" (show money)
+
 
 startGameMenu :: Int -> IO ()
 startGameMenu money = do
-  putStr "\ESC[2J"
   putStrLn $ "Seu dinheiro: $ " ++ show money
   putStrLn "\nEscolha sua acao: "
   putStrLn "1 - Apostar 10"
@@ -39,7 +47,7 @@ startGameMenu money = do
   putStrLn "4 - Apostar 250"
   putStrLn "5 - Apostar 500"
   putStrLn "6 - Voltar para o menu principal\n"
-
+  
   option <- getLine
   deckShuffled <- shuffle deck
   let playerHand = head deckShuffled : [deckShuffled !! 1]
@@ -94,7 +102,6 @@ startGameMenu money = do
 
 inGameMenu :: Int -> Int -> [([Char], Char)] -> [([Char], Char)] -> [([Char], Char)] -> IO ()
 inGameMenu bet totalMoney playerHand dealerHand deckShuffled = do
-  let clear = system "cls"
   putStrLn $ "\nSua mão:\n" ++ (printHand playerHand)
   putStrLn $ "Mão do dealer:\n" ++ (printHand dealerHand)
 
@@ -105,7 +112,6 @@ inGameMenu bet totalMoney playerHand dealerHand deckShuffled = do
   putStrLn "2 - Comprar carta"
   putStrLn "3 - Fechar mao\n"
   option <- getLine
-
   case option of
     "1" -> do
       if (totalMoney - bet) < 0
