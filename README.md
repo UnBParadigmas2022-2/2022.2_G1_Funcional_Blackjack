@@ -13,6 +13,7 @@
 | 17/0142329 |  Francisco Emanoel Ferreira |
 | 19/0014032 |  Guilherme ROgelin Vial |
 | 18/0022237 |  Liverson Furtado Severo |
+| 14/0155350 |  Matheus Filipe Faria Alves de Andrade |
 
 ## Sobre 
 Esse repositório possui como objetivo a realização do trabalho sobre o paradigma funcional na matéria Paradigmas de Programação do curso de engenharia de software na UnB - FGA. 

@@ -7,11 +7,12 @@ import Data.Typeable
 import System.Exit
 import System.IO
 import System.Random
+import GHC.IO.Encoding
 
 
 main :: IO ()
 main = do
-  putStr "\ESC[2J"
+  setLocaleEncoding utf8
   putStrLn "Bem-vindo ao BlackJack\n"
   mainMenu 2000
 
@@ -30,7 +31,6 @@ mainMenu money = do
 
 startGameMenu :: Int -> IO ()
 startGameMenu money = do
-  putStr "\ESC[2J"
   putStrLn $ "Seu dinheiro: $ " ++ show money
   putStrLn "\nEscolha sua acao: "
   putStrLn "1 - Apostar 10"
@@ -91,10 +91,12 @@ startGameMenu money = do
     "6" -> do
         putStrLn "Voltando para o menu...\n"
         mainMenu money
+    _   -> do
+        putStrLn "------>|x-Opção inválida!-x|<------\n"
+        startGameMenu money
 
 inGameMenu :: Int -> Int -> [([Char], Char)] -> [([Char], Char)] -> [([Char], Char)] -> IO ()
 inGameMenu bet totalMoney playerHand dealerHand deckShuffled = do
-  let clear = system "cls"
   putStrLn $ "\nSua mão:\n" ++ (printHand playerHand)
   putStrLn $ "Mão do dealer:\n" ++ (printHand dealerHand)
 
@@ -143,6 +145,10 @@ inGameMenu bet totalMoney playerHand dealerHand deckShuffled = do
           compareHandValuesOverOrEqual21 playerHand dealerHand bet totalMoney
           compareHandValues playerHand dealerHand bet totalMoney
           mainMenu totalMoney
+    _   -> do
+      putStrLn "------>|x-Opção inválida!-x|<------\n"
+      inGameMenu bet totalMoney playerHand dealerHand deckShuffled
+
 
 compareHandValuesOverOrEqual21 :: [([Char], Char)] -> [([Char], Char)] -> Int -> Int -> IO ()
 compareHandValuesOverOrEqual21 hand dealerHand bet totalMoney = do
