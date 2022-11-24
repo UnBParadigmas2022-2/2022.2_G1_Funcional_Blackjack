@@ -99,6 +99,8 @@ startGameMenu money = do
     "6" -> do
         putStrLn "Voltando para o menu...\n"
         mainMenu money
+    _ ->startGameMenu money
+
 
 inGameMenu :: Int -> Int -> [([Char], Char)] -> [([Char], Char)] -> [([Char], Char)] -> IO ()
 inGameMenu bet totalMoney playerHand dealerHand deckShuffled = do
