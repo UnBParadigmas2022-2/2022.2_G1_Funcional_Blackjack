@@ -194,8 +194,20 @@ inGameMenu :: String -> Int -> Int -> [([Char], Char)] -> [([Char], Char)] -> [(
 inGameMenu nome bet totalMoney playerHand dealerHand deckShuffled = do
   putStrLn $ "\nSua mão:\n" ++ (printHand playerHand)
   putStrLn $ "Mão do dealer:\n" ++ (printHand dealerHand)
+  compareHandValuesOverOrEqual21 deckShuffled playerHand dealerHand bet totalMoney nome
 
-  compareHandValuesOverOrEqual21 playerHand dealerHand bet totalMoney nome
+
+
+inGameOpt :: String -> Int -> Int -> [([Char], Char)] -> [([Char], Char)] -> [([Char], Char)] -> IO ()
+inGameOpt nome bet totalMoney playerHand dealerHand deckShuffled = do
+  cmprOE21 deckShuffled playerHand dealerHand bet totalMoney nome
+  putStrLn $ "\nSua mão:\n" ++ (printHand playerHand)
+  putStrLn $ "Mão do dealer:\n" ++ (printHand dealerHand)
+  let pHand = getHandValue playerHand
+      dHand = getHandValue dealerHand
+  putStrLn $ "Valor da sua mão: " ++ show (pHand) ++ "\n"
+  putStrLn $ "Valor da mão do dealer: " ++ show (dHand) ++ "\n"
+
   putStrLn $ "Seu dinheiro: $ " ++ show totalMoney
   putStrLn $ "\n----------------------------------------\n" ++ "Escolha sua acao: "
   putStrLn "1 - Dobrar aposta"
@@ -207,22 +219,17 @@ inGameMenu nome bet totalMoney playerHand dealerHand deckShuffled = do
       if (totalMoney - bet) < 0
         then do
           putStrLn "Dinheiro insuficiente para dobrar a aposta"
-          inGameMenu nome bet totalMoney playerHand dealerHand deckShuffled
+          inGameOpt nome bet totalMoney playerHand dealerHand deckShuffled
         else do
           putStrLn $ "Dobrando aposta... Valor atual: " ++ show (bet * 2)
           let _playerHand = head deckShuffled : playerHand
-          inGameMenu nome (bet * 2) (totalMoney - bet) _playerHand dealerHand (drop 1 deckShuffled)
+          inGameOpt nome (bet * 2) (totalMoney - bet) _playerHand dealerHand (drop 1 deckShuffled)
     "2" -> do
       let _playerHand = head deckShuffled : playerHand
 
       let handValuePlayer = getHandValue _playerHand
       let handValueDealer = getHandValue dealerHand
-      if handValueDealer < handValuePlayer
-        then do
-          let _dealerHand = head (drop 1 deckShuffled) : dealerHand
-          inGameMenu nome bet totalMoney _playerHand _dealerHand (drop 2 deckShuffled)
-        else do
-          inGameMenu nome bet totalMoney _playerHand dealerHand (drop 1 deckShuffled)
+      inGameOpt nome bet totalMoney _playerHand dealerHand (drop 1 deckShuffled)
 
     "3" -> do
       putStrLn "Fechando mao...\n"
@@ -232,23 +239,52 @@ inGameMenu nome bet totalMoney playerHand dealerHand deckShuffled = do
       if handValueDealer < handValuePlayer
         then do
           let _dealerHand = head deckShuffled : dealerHand
-          compareHandValuesOverOrEqual21 playerHand _dealerHand bet totalMoney nome
+          compareHandValuesOverOrEqual21 deckShuffled playerHand _dealerHand bet totalMoney nome
           compareHandValues playerHand _dealerHand bet totalMoney nome
           mainMenu nome totalMoney
         else do
-          compareHandValuesOverOrEqual21 playerHand dealerHand bet totalMoney nome
+          compareHandValuesOverOrEqual21 deckShuffled playerHand dealerHand bet totalMoney nome
           compareHandValues playerHand dealerHand bet totalMoney nome
           mainMenu nome totalMoney
 
-compareHandValuesOverOrEqual21 :: [([Char], Char)] -> [([Char], Char)] -> Int -> Int -> String -> IO ()
-compareHandValuesOverOrEqual21 hand dealerHand bet totalMoney nome = do
+compareHandValuesOverOrEqual21 :: [([Char], Char)] -> [([Char], Char)] -> [([Char], Char)] -> Int -> Int -> String -> IO ()
+compareHandValuesOverOrEqual21 deckShuffled hand dealerHand bet totalMoney nome = do
+  let handValue = getHandValue hand
+      handValueDealer = getHandValue dealerHand
+  let t = tail (deckShuffled)
+  if handValueDealer < 14
+    then do
+      let _dealerHand = head deckShuffled : dealerHand
+      compareHandValuesOverOrEqual21 t hand _dealerHand bet totalMoney nome
+    else do
+      putStrLn $ "Valor da sua mão " ++ show handValue
+      putStrLn $ "Valor da mão do dealer " ++ show handValueDealer
+      if handValue > 21 || handValueDealer == 21
+        then do
+          putStrLn $ "Dealer venceu\n"
+          mainMenu nome totalMoney
+          exitSuccess
+        else
+          if handValueDealer > 21 || handValue == 21
+            then do
+              putStrLn "Você venceu\n"
+              putStrLn $ "Seu dinheiro: $ " ++ show (totalMoney + (2 * bet)) ++ "\n"
+              mainMenu nome (totalMoney + (2 * bet))
+              exitSuccess
+            else do
+              --putStrLn "To caindo aqui\n"
+              inGameOpt nome bet totalMoney hand dealerHand t
+      
+
+cmprOE21 :: [([Char], Char)] -> [([Char], Char)] -> [([Char], Char)] -> Int -> Int -> String -> IO ()
+cmprOE21 deckShuffled hand dealerHand bet totalMoney nome = do
   let handValue = getHandValue hand
       handValueDealer = getHandValue dealerHand
   putStrLn $ "Valor da sua mão " ++ show handValue
   putStrLn $ "Valor da mão do dealer " ++ show handValueDealer
   if handValue > 21 || handValueDealer == 21
     then do
-      putStrLn "Dealer venceu\n"
+      putStrLn $ "Dealer venceu\n"
       mainMenu nome totalMoney
       exitSuccess
     else
@@ -259,7 +295,8 @@ compareHandValuesOverOrEqual21 hand dealerHand bet totalMoney nome = do
           mainMenu nome (totalMoney + (2 * bet))
           exitSuccess
         else do
-          putStrLn ""
+          putStr ""
+  
 
 compareHandValues :: [([Char], Char)] -> [([Char], Char)] -> Int -> Int -> String -> IO ()
 compareHandValues hand dealerHand bet totalMoney nome = do
