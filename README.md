@@ -25,7 +25,7 @@ O Blackjack ou 21 é um jogo de cartas jogado tradicionalmente nos casinos com 1
 
 - do _2 ao 10_ os valores são respectivos ao número da carta, o _2_ vale 2 pontos, o _3_ vale 3 pontos e assim por diante.
 - As cartas com as letras _J, Q_ e _K_ valem 10 pontos.
-- A carta _A_ vale 11 pontos ou 1 ponto, de acordo com a necessidade da aposta.
+- A carta _A_ vale 1 ponto.
 
 O objetivo é ter mais pontos que o Dealer, mas não ultrapassando os 21 pontos pois esse é caso em que se perde.
 
