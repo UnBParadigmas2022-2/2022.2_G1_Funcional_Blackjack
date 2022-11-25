@@ -21,21 +21,37 @@ Esse repositório possui como objetivo a realização do trabalho sobre o paradi
 
 Nosso projeto terá como base [esse](https://github.com/UnBParadigmas2021-2/2021.2_G5_Funcional_Blackjack) projeto, um jogo de blackjack em que o usuário joga contra a máquina. 
 
-Em que no Blackjack ou 21 é um jogo de cartas jogado num casino com 1 a 8 baralhos de 52 cartas cada, com o objetivo de ter mais pontos que o seu adversário, mas não ultrapassando os 21 (caso em que perde). até 5 cartas, ou até chegar ao número 17.
+O Blackjack ou 21 é um jogo de cartas jogado tradicionalmente nos casinos com 1 a 8 baralhos de 52 cartas cada. As cartas possuem seus valores: 
+
+- do _2 ao 10_ os valores são respectivos ao número da carta, o _2_ vale 2 pontos, o _3_ vale 3 pontos e assim por diante.
+- As cartas com as letras _J, Q_ e _K_ valem 10 pontos.
+- A carta _A_ vale 11 pontos ou 1 ponto, de acordo com a necessidade da aposta.
+
+O objetivo é ter mais pontos que o Dealer, mas não ultrapassando os 21 pontos pois esse é caso em que se perde.
 
 Nosso objetivo principal será a implementação de um modo multijogador para o jogo, além de melhorias gerais.
 
-## Screenshots
+## Uso e Screenshots
+
+Ao iniciar o jogo, escolha suas opções com base do Menu Inicial. Crie um usuário com seu nome e selecione _Iniciar partida_ para começar o jogo.
+
+Primeiramente consulte as regras do jogo no ReadMe do projeto, depois escolha o valor da sua aposta e boa sorte! 
+
 ```
 menu "interativo da aplicação
 ```
 <a href="https://ibb.co/RC1Py1T"><img src="https://i.ibb.co/fCbtvbd/Captura-de-tela-de-2022-11-24-23-30-10.png" alt="Captura-de-tela-de-2022-11-24-23-30-10" border="0"></a>
+
+Iniciando a partida, analise sua mão e a carta mostrada do Dealer.
 
 ```
 iniciando Partida
 ```
 <a href="https://ibb.co/714SCrx"><img src="https://i.ibb.co/YLZNQf4/Captura-de-tela-de-2022-11-24-23-35-36.png" alt="Captura-de-tela-de-2022-11-24-23-35-36" border="0"></a><br /><a target='_blank' href='https://pt-br.imgbb.com/'>site de criar fotos</a><br />
 
+No decorrer do jogo, você pode dobrar sua aposta, comprar outra carta ou fechar suas cartas.
+
+Ao final de cada partida será mostrado se você ganhou ou perdeu a aposta, e o total do seu dinheiro. A partir daí, você pode começar outra partida ou salvar o jogo e fechar.
 
 ```
 Finalizando Partida
@@ -70,22 +86,6 @@ ghc --make -o menu menu.hs -o blackjack blackjack.hs
 ./blackjack
 ```
 
-
-## Uso 
-Explique como usar seu projeto.
-Procure ilustrar em passos, com apoio de telas do software, seja com base na interface gráfica, seja com base no terminal.
-Nessa seção, deve-se revelar de forma clara sobre o funcionamento do software.
-
-## Vídeo
-Adicione 1 ou mais vídeos com a execução do projeto.
-Procure: 
-(i) Introduzir o projeto;
-(ii) Mostrar passo a passo o código, explicando-o, e deixando claro o que é de terceiros, e o que é contribuição real da equipe;
-(iii) Apresentar particularidades do Paradigma, da Linguagem, e das Tecnologias, e
-(iV) Apresentar lições aprendidas, contribuições, pendências, e ideias para trabalhos futuros.
-OBS: TODOS DEVEM PARTICIPAR, CONFERINDO PONTOS DE VISTA.
-TEMPO: +/- 15min
-
 ## Participações
 | Nome do Membro                           | Contribuição                                         | Significância da Contribuição para o Projeto (Excelente/Boa/Regular/Ruim/Nula) |
 | ---------------------------------------- | ---------------------------------------------------- | ------------------------------------------------------------------------------ |
@@ -110,4 +110,4 @@ Quaisquer outras informações sobre o projeto podem ser descritas aqui. Não es
 
 - Projeto [Blackjack](https://github.com/UnBParadigmas2021-2/2021.2_G5_Funcional_Blackjack)
 
--
+- Regras do jogo Blackjack: [Regras](https://www.youtube.com/watch?v=I1fKYgDDDM4)
