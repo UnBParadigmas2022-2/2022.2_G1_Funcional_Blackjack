@@ -11,8 +11,10 @@
 | 19/0044799 |  Antônio Ferreira de Castro Neto |
 | 19/0042419 |  Davi Matheus da Rocha de Oliveira |
 | 17/0142329 |  Francisco Emanoel Ferreira |
-| 19/0014032 |  Guilherme ROgelin Vial |
+| 19/0014032 |  Guilherme Rogelin Vial |
 | 18/0022237 |  Liverson Furtado Severo |
+| 14/0155350 |  Matheus Filipe Faria Alves de Andrade |
+| 19/0058650 |  Natanael Fernandes Coelho Filho |
 
 ## Sobre 
 Esse repositório possui como objetivo a realização do trabalho sobre o paradigma funcional na matéria Paradigmas de Programação do curso de engenharia de software na UnB - FGA. 
@@ -27,9 +29,16 @@ Adicione 2 ou mais screenshots do projeto em termos de interface e/ou funcioname
 ## Instalação 
 **Linguagens**: Haskell<br>
 **Tecnologias**: GHCI<br>
-Descreva os pré-requisitos para rodar o seu projeto e os comandos necessários.
-Insira um manual ou um script para auxiliar ainda mais.
-Gifs animados e outras ilustrações são bem-vindos!
+
+- Instalar o GHC
+```bash
+sudo apt install ghc
+```
+- Rodar o seguinte comando dentro da pasta `src`.
+```
+ghc --make -o menu menu.hs -o blackjack blackjack.hs
+```
+- Executar o binario `blackjack` gerado.
 
 ## Uso 
 Explique como usar seu projeto.
@@ -50,7 +59,14 @@ TEMPO: +/- 15min
 Apresente, brevemente, como cada membro do grupo contribuiu para o projeto.
 |Nome do Membro | Contribuição | Significância da Contribuição para o Projeto (Excelente/Boa/Regular/Ruim/Nula) |
 | -- | -- | -- |
-| Fulano  |  Programação dos Fatos da Base de Conhecimento Lógica | Boa |
+| 18/0012002 |  Álvaro Gouveia | Perfis de jogadores. |
+| 19/0044799 |  Antônio Ferreira de Castro Neto | |
+| 19/0042419 |  Davi Matheus da Rocha de Oliveira | |
+| 17/0142329 |  Francisco Emanoel Ferreira | Perfis de jogadores. |
+| 19/0014032 |  Guilherme Rogelin Vial | Organização do repositório. |
+| 18/0022237 |  Liverson Furtado Severo | Perfis de jogadores. |
+| 14/0155350 |  Matheus Filipe Faria Alves de Andrade | Organização do repositório. |
+| 19/0058650 | Natanael Fernandes Coelho Filho |
 
 ## Outros 
 Quaisquer outras informações sobre o projeto podem ser descritas aqui. Não esqueça, entretanto, de informar sobre:
@@ -60,5 +76,5 @@ Quaisquer outras informações sobre o projeto podem ser descritas aqui. Não es
 (iV) Trabalhos Futuros.
 
 ## Fontes
-Referencie, adequadamente, as referências utilizadas.
-Indique ainda sobre fontes de leitura complementares.
+- Learn You a Haskell for Great Good! Disponível em: [learnyourhaskell](http://learnyouahaskell.com/chapters)
+- Projeto [Blackjack](https://github.com/UnBParadigmas2021-2/2021.2_G5_Funcional_Blackjack)
