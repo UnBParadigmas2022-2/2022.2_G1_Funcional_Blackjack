@@ -44,18 +44,29 @@ Finalizando Partida
 
 ## Instalação 
 **Linguagens**: Haskell<br>
-**Tecnologias**: GHCI<br>
+**Tecnologias**: GHCI e Makefile<br>
 
 - Instalar o GHC
 ```bash
 sudo apt install ghc
 ```
-- Rodar o seguinte comando dentro da pasta `src`.
+- Instalar o make
+```bash
+sudo apt install make
+```
+
+**Primeira forma de executar o projeto**
+
+Atenção: Verifiqu que você esteja dentro da pasta `/src`
+
+```
+make start
+```
+
+**Segunda forma de executar o projeto**
 ```
 ghc --make -o menu menu.hs -o blackjack blackjack.hs
-```
-- Executar o binario `blackjack` gerado.
-```
+
 ./blackjack
 ```
 
